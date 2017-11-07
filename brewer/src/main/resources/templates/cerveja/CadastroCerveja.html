@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
@@ -7,4 +8,13 @@
 <body>
 	<h1>Olá! Thymeleaf configurado</h1>
 </body>
+	<span th:text="${mensagem}"></span>
+	<form method="post">
+		<Label for="sku">SKU</Label>
+		<input id="sku"  type="text" name="sku"/>
+		<label for="nome">Nome</label>
+		<input id="nome" type="text" name="nome">
+		<input type="submit" value="salvar">
+	</form>
+	
 </html>
