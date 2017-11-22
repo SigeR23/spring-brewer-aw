@@ -14,8 +14,9 @@ import com.siger.brewer.modal.Cerveja;
 @Controller
 public class CervejasController {
 	
-	@RequestMapping("/cerveja/novo")
-	public String novo() {
+	@RequestMapping("/cervejas/novo")
+	public String novo(Cerveja cerveja) {
+		
 		return "cerveja/CadastroCerveja";
 	}
 	
@@ -23,15 +24,17 @@ public class CervejasController {
 	public String cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes) {
 		
 		if(result.hasErrors()) {
-			model.addAttribute("mensagem", "Erro no formulário");
-			return "cerveja/CadastroCerveja";
+			model.addAttribute(cerveja);
+			return novo(cerveja);
 		}
 		
-		attributes.addFlashAttribute("mensagem", "Cerveja Salva");
-		System.out.println("Param sku = " + cerveja.getSku());
-		System.out.println("Param nome = " + cerveja.getNome());
-		System.out.println("Cadastrar");
+		attributes.addFlashAttribute("mensagem", "Cerveja Salva com sucesso");
 		return "redirect:/cerveja/novo";
 	}
 	
+	
+	@RequestMapping("/cervejas/cadastro")
+	public String cadastro() {
+		return "cerveja/cadastro-produto";
+	}
 }
