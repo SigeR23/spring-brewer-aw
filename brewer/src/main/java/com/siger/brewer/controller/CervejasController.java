@@ -2,6 +2,8 @@ package com.siger.brewer.controller;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,9 +16,12 @@ import com.siger.brewer.modal.Cerveja;
 @Controller
 public class CervejasController {
 	
-	@RequestMapping("/cervejas/novo")
+	private static Logger logger = LoggerFactory.getLogger(CervejasController.class);
+	
+	@RequestMapping("/cerveja/novo")
 	public String novo(Cerveja cerveja) {
-		
+		logger.error("logger nivel erro");
+		logger.info("logger nivel info");
 		return "cerveja/CadastroCerveja";
 	}
 	
@@ -32,9 +37,4 @@ public class CervejasController {
 		return "redirect:/cerveja/novo";
 	}
 	
-	
-	@RequestMapping("/cervejas/cadastro")
-	public String cadastro() {
-		return "cerveja/cadastro-produto";
-	}
 }

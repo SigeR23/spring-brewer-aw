@@ -1,10 +1,7 @@
 package com.siger.brewer.modal;
 
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 public class Cerveja {
