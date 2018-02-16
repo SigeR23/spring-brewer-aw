@@ -13,10 +13,13 @@
 		<project.build.sourceEnconding> UTF-8</project.build.sourceEnconding>
 		<project.reporting.outputEnconding>UTF-8</project.reporting.outputEnconding>
 
+
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 
 		<java.version>1.8</java.version>
 		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+		<flyway-maven-plugin.version>4.0.2</flyway-maven-plugin.version>
+		<mysql-connector-j.version>5.1.40</mysql-connector-j.version>
 
 		<spring-framework.version>4.3.0.RELEASE</spring-framework.version>
 
@@ -26,17 +29,24 @@
 		<!-- Thymeleaf -->
 		<thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
 
+		<!-- JPA/HIBERNATE -->
+		<hibernate.version>5.1.0.Final</hibernate.version>
+
 		<!-- Bean Validator | Hibernate Validator -->
 		<hibernate-validator.version>6.0.4.Final</hibernate-validator.version>
-		
+
 		<!-- Thymeleaf Layout Dialect -->
 		<thymeleaf-layout-dialect.version>2.2.2</thymeleaf-layout-dialect.version>
-		
+
 		<!-- Logging -->
 		<log4j.version>2.6</log4j.version>
-		
+
 		<!-- jcl-over-slf4j -->
 		<jcl-over-slf4j.version>1.7.21</jcl-over-slf4j.version>
+
+		<!-- Spring Data JPA -->
+		<spring-data-jpa.version>1.10.2.RELEASE</spring-data-jpa.version>
+
 
 	</properties>
 
@@ -58,6 +68,15 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>${flyway-maven-plugin.version}</version>
+				<configuration>
+					<driver>com.mysql.jdbc.Driver</driver>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -87,6 +106,13 @@
 					<artifactId>commons-logging</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+
+		<!-- Spring Data JPA -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring-data-jpa.version}</version>
 		</dependency>
 
 		<!-- Servlet API -->
@@ -121,14 +147,14 @@
 			<version>${hibernate-validator.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Thymeleaf - Layout Dialect -->
 		<dependency>
 			<groupId>nz.net.ultraq.thymeleaf</groupId>
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 			<version>${thymeleaf-layout-dialect.version}</version>
 		</dependency>
-		
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
@@ -151,8 +177,31 @@
 			<version>${jcl-over-slf4j.version}</version>
 		</dependency>
 
+		<!-- JPA/HIBERNATE -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Hibernate - Java 8 support -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- MySQL Driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-connector-j.version}</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
-	
+
 	<repositories>
 		<repository>
 			<id>sonatype-nexus-snapshots</id>
@@ -160,6 +209,15 @@
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 			<snapshots>
 				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>spring-libs-release</id>
+			<name>Spring Releases</name>
+			<url>https://repo.spring.io/libs-release</url>
+			<snapshots>
+				<enabled>false</enabled>
 			</snapshots>
 		</repository>
 	</repositories>

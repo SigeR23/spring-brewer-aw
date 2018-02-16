@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="'layout/layoutPadrao'">
+<head>
+	<title>Cadastro Cliente</title>
+	
+	
+</head>
+<body>
+	
+<section class="aw-layout-content  js-content" layout:fragment="conteudo">
+	<div class="page-header">
+		<div class="container-fluid">
+			<h1>Cadastro de Cliente</h1>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+
+		<!--  <div class="alert  alert-danger  alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<i class="fa  fa-exclamation-circle"></i> Já existe um produto com o nome informado.
+		</div> -->
+		
+		<form method="post" th:object="${cliente}" class="form-vertical  js-form-loading">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<label for="nome">Nome</label> 
+						<input id="nome" type="text" class="form-control"/>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="form-group">
+						<div class="form-check form-check-inline">
+						<label for="tipoPessoa">Tipo Pessoa</label>
+							<div>
+								<div class="radio radio-inline">
+									<input class="form-check-input" type="radio" name="pessoaFisica" id="pessoa-fisica">
+									<label class="form-check-label" for="pessoa-fisica">Física</label>
+								</div>
+								<div class="radio radio-inline">
+									<input class="form-check-input" type="radio" name="pessoaJuridica" id="pessoa-juridica">
+									<label class="form-check-label" for="pessoa-juridica">Juridica</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-8">
+					<div class="form-group">
+						<label for="cpf">CPF/CNPJ</label> 
+						<input id="cpf" type="text" class="form-control  js-cpfcnpj"/>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-4">
+					<div class="form-group">
+						<label for="telefone">Telefone</label> 
+						<input id="telefone" type="text" class="form-control  js-telefone"/>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-8">
+					<div class="form-group">
+						<label for="email">E-mail</label> 
+						<input id="email" type="email" class="form-control"/>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 col-md-4">
+					<div class="form-group">
+						<label for="logradouro">Logradouro</label> 
+						<input id="logradouro" type="text" class="form-control"/>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="form-group">
+						<label for="numero">Número</label> 
+						<input id="numero" type="text" class="form-control js-plain"/>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="form-group">
+						<label for="complemento">Complemento</label> 
+						<input id="complemento" type="text" class="form-control"/>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-4">
+					<div class="form-grouo">
+						<label for="cep">CEP</label>
+						<input type="text" id="cep" class="form-control js-cep">
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="form-group">
+						<label for="estado">Estado</label>
+						<select class="form-control" id="estado">
+							<option value="">Selecione um estado</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="form-group">
+						<label for="cidade">Cidade</label>
+						<select class="form-control" id="cidade">
+							<option value="">Selecione uma cidade</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<button class="btn  btn-primary" type="submit">Salvar</button>
+			</div>
+		</form>
+	</div>
+	
+</section>
+
+
+</body>
+</html>
