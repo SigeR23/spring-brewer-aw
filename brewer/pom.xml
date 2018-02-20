@@ -27,7 +27,7 @@
 		<servlet.version>3.1.0</servlet.version>
 
 		<!-- Thymeleaf -->
-		<thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
+		<thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
 
 		<!-- JPA/HIBERNATE -->
 		<hibernate.version>5.1.0.Final</hibernate.version>

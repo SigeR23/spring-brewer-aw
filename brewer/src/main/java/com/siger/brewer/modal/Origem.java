@@ -3,7 +3,7 @@ package com.siger.brewer.modal;
 public enum Origem {
 
 	NACIONAL("Nacional"),
-	INTERNCIONAL("Internacional");
+	INTERNACIONAL("Internacional");
 	
 	private String descricao;
 	

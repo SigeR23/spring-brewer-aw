@@ -13,9 +13,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
+
+import com.siger.brewer.validation.SKU;
 
 @Entity
 @Table(name = "cerveja")
@@ -27,35 +33,48 @@ public class Cerveja implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
+	@SKU
 	@NotBlank(message = "SKU é obrigatório")
 	private String sku;
 	
 	@NotBlank(message = "nome é obrigatório")
 	private String nome;
 	
-	@Size(min = 1, max = 50, message = "Descrição deve conter entre 1 e 50 caracteres")
+	@NotBlank(message = "descrição é obrigatorio")
+	@Size(max = 50, message = "Descrição deve conter entre 1 e 50 caracteres")
 	private String descricao;
 	
+	@NotNull(message = "Valor é obrigatório")
+	@DecimalMin(value = "0.5", message = "valor não deve ser menor que 0.50")
+	@DecimalMax(value = "9999999", message = "Valor não deve passar de 9.999.999,99")
 	private BigDecimal valor;
 	
+	@NotNull(message = "Teor Alcoolico é obrigatório")
 	@Column(name = "teor_alcoolico")
 	private BigDecimal teorAlcoolico;
 	
+	@NotNull(message = "Comissão é obrigatória")
+	@DecimalMax(value = "80", message = "comissao não deve passar de 80%")
 	private BigDecimal comissao;
 	
+	@NotNull(message = "Quantidade em Estoque é obrigatória")
+	@Max(value = 9999, message = "quantidade não deve passar de 9.999")
 	@Column(name = "quantidade_estoque")
 	private Integer quantidadeEstoque;
 	
+	@NotNull(message = "Origem é obrigatório")
 	@Enumerated(EnumType.STRING)
 	private Origem origem;
 	
+	@NotNull(message = "Sabor é obrigatório")
 	@Enumerated(EnumType.STRING)
 	private Sabor sabor;
 	
+	@NotNull(message = "Estilo é obrigatório")
 	@ManyToOne
 	@JoinColumn(name = "codigo_estilo")
 	private Estilo estilo;
-	
+		
 	public Long getCodigo() {
 		return codigo;
 	}

@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.siger.brewer.modal.Cerveja;
+import com.siger.brewer.modal.Estilo;
 import com.siger.brewer.modal.Origem;
 import com.siger.brewer.modal.Sabor;
 import com.siger.brewer.repository.Estilos;
@@ -28,7 +29,7 @@ public class CervejasController {
 	
 	@RequestMapping("/cerveja/novo")
 	public ModelAndView novo(Cerveja cerveja) {
-		
+		 
 		ModelAndView mv = new ModelAndView("cerveja/CadastroCerveja");
 		mv.addObject("sabores", Sabor.values());
 		mv.addObject("estilos", estilos.findAll());
@@ -40,18 +41,15 @@ public class CervejasController {
 	public ModelAndView cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes) {
 		
 		if(result.hasErrors()) {
+			
 			model.addAttribute(cerveja);
 			return novo(cerveja);
 		}
 		
-		System.out.println(cerveja.getSku());
-		System.out.println(cerveja.getNome());
-		System.out.println(cerveja.getSabor());
-		System.out.println(cerveja.getOrigem());
-		System.out.println(cerveja.getEstilo().getCodigo());
-		
+		model.addAttribute(new Estilo());
 		cadastroCervejaService.salvar(cerveja);
 		attributes.addFlashAttribute("mensagem", "Cerveja Salva com sucesso");
+		
 		return new ModelAndView("redirect:/cerveja/novo");
 	}
 	
