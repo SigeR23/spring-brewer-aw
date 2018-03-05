@@ -8,7 +8,8 @@
 		</Console>
 	</Appenders>
 	<Loggers>
-	    <logger name="com.siger.brewer.controller" level="info"></logger>
+	    
+	    <logger name="com.siger.brewer" level="debug"></logger>
 	    <logger name="org.hibernate.SQL" level="debug"></logger>
 		<Root level="error">
 			<AppenderRef ref="Console" />
