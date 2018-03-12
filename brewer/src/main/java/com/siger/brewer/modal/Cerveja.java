@@ -22,11 +22,13 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.util.StringUtils;
 
 import com.siger.brewer.validation.SKU;
 
 @Entity
 @Table(name = "cerveja")
+@SuppressWarnings("deprecation")
 public class Cerveja implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -34,6 +36,7 @@ public class Cerveja implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
+	
 	
 	@SKU
 	@NotBlank(message = "SKU é obrigatório")
@@ -156,6 +159,7 @@ public class Cerveja implements Serializable {
 	}
 	
 	public String getFoto() {
+		
 		return foto;
 	}
 
@@ -170,7 +174,11 @@ public class Cerveja implements Serializable {
 	public void setContentType(String contentType) {
 		this.contentType = contentType;
 	}
-
+	
+	public String getFotoOrMock() {
+		return !StringUtils.isEmpty(this.foto) ? foto : "cerveja-mock.png";
+	}
+	
 	@Override 
 	public int hashCode() {
 		final int prime = 31;
@@ -178,6 +186,7 @@ public class Cerveja implements Serializable {
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

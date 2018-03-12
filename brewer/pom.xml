@@ -49,6 +49,9 @@
 		
 		<!-- Jackson - JSON -->
 		<jackson-core.version>2.7.5</jackson-core.version>
+		
+		<!-- thumbnailator - Gerar Thumbnail -->
+		<thumbnailator.version>0.4.8</thumbnailator.version>
 
 	</properties>
 
@@ -210,17 +213,18 @@
 			<version>${jackson-core.version}</version>
 			<scope>compile</scope>
 		</dependency>
+		
+		<!-- thumbnailator - Gerar Thumbnail -->
+		<dependency>
+			<groupId>net.coobird</groupId>
+			<artifactId>thumbnailator</artifactId>
+			<version>${thumbnailator.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		
 	</dependencies>
 
 	<repositories>
-		<repository>
-			<id>sonatype-nexus-snapshots</id>
-			<name>Sonatype Nexus Snapshots</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
 
 		<repository>
 			<id>spring-libs-release</id>

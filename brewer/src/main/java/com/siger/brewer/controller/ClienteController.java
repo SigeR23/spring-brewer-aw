@@ -12,15 +12,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.siger.brewer.modal.Cliente;
 
 @Controller
+@RequestMapping("/cliente")
 public class ClienteController {
 	
-	@RequestMapping("/cliente/novo")
+	@RequestMapping("/novo")
 	public String novoCliente(Cliente cliente) {
 		
 		return "cliente/CadastroCliente";
 	}
 	
-	@RequestMapping(value="/cliente/novo", method = RequestMethod.POST)
+	@RequestMapping(value="/novo", method = RequestMethod.POST)
 	public String cadastrarCliente(@Valid Cliente cliente, BindingResult result, Model model, RedirectAttributes attributes) {
 		if(result.hasErrors()) {
 			model.addAttribute(cliente);

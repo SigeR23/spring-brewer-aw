@@ -4,7 +4,9 @@ import java.time.LocalDate;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+@SuppressWarnings("deprecation")
 public class Usuario {
+	
 	
 	@NotBlank(message = "nome é obrigatorio")
 	private String nome;

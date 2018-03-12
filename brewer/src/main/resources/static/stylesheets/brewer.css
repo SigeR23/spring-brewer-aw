@@ -6,6 +6,10 @@
 	font-size: 18px;	
 }
 
+ .bw-required > .control-label:after {
+	content:"*"; 
+ }
+
 
 /*
 #	componentes
@@ -56,4 +60,51 @@
 	
 	font-size: 500px;
 	
+}
+
+/*
+	 tabela simples 
+*/
+
+.bw-tabela-simples {
+	margin-top: 15px;	
+}
+
+.bw-tabela-simples table tr th {
+	border-bottom-width: 1px;
+}
+
+.bw-tabela-simples table tr td {
+	border-top: none;
+	border-bottom: 1px solid #e7eaec;
+	padding: 10px;
+	vertical-align: middle;
+}
+
+/* Colunas - tabela cerveja */
+
+.table-cerveja-col-foto {
+	min-width: 50px;
+	width: 50px;
+}
+.table-cerveja-col-sku {
+	width: 50px;
+	text-align: center;
+	
+}
+.table-cerveja-col-nome {
+	
+}
+.table-cerveja-col-estilo {
+	width: 120px;
+}
+.table-cerveja-col-origem {
+	width: 100px;
+}
+.table-cerveja-col-valor {
+	width: 100px;
+	text-align: right;
+}
+.table-cerveja-col-acoes {
+	width: 80px;
 }
